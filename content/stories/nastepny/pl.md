@@ -1,6 +1,7 @@
 ---
 title: Następny
 date: 2026-10-29
+ai: Claude Sonnet 5.5
 summary: Zwolniony programista próbuje kolejnych zawodów, które maszyny przejmują jeden po drugim.
 ---
 ### 2035

@@ -1,6 +1,7 @@
 ---
 title: Next
 date: 2026-10-29
+ai: Claude Sonnet 5.5
 tags: [short story, sci-fi]
 summary: A laid-off programmer tries one profession after another as the machines take them over.
 ---

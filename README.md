@@ -17,7 +17,8 @@ content/stories/cien/
 ```
 
 - Sections: `content/stories/`, `content/blog/`, `content/opinions/`, `content/pages/` (About, Links).
-- Front matter: `title` (required), `date`, `tags`, `summary`, `draft: true`, `original: <lang>`.
+- Front matter: `title` (required), `date`, `tags`, `summary`, `draft: true`, `original: <lang>`, `ai: <model name>`.
+- `ai: Claude Sonnet 5.5` adds a note ("Written with AI assistance (…)") at the end of that language file's page. It is set per language file, so an original and its translation can differ; omit it for fully human-written text. Works in every section.
 - The default language is `en` when present; `original:` overrides it.
 - A PL | EN switch is shown only when a post has more than one language file.
 - `date` must match across the language files of a post; tags are merged.

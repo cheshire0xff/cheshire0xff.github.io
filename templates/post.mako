@@ -26,6 +26,9 @@
     ${variant.html | n}
   </div>
   <footer>
+    % if variant.ai_note:
+    <p class="ai-note">${variant.ai_note}</p>
+    % endif
     ${c.tag_list(entry)}
   </footer>
 </article>
