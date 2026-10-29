@@ -1,7 +1,6 @@
 ---
 title: Cień
 date: 2026-10-29
-tags: [opowiadanie, sci-fi]
 summary: Cztery tygodnie po wdrożeniu Programu Ciągłości Operacyjnej.
 ---
 ---
