@@ -1,6 +1,7 @@
 ---
 title: Shadow
 date: 2026-10-29
+tags: [short story, sci-fi]
 summary: Four weeks after the rollout of the Operational Continuity Program.
 ---
 ---
