@@ -68,6 +68,28 @@ def test_polish_only_entry_stays_polish(tmp_path: Path) -> None:
     assert entry.original == "pl"
 
 
+def test_ai_note_is_per_language(tmp_path: Path) -> None:
+    write(tmp_path / "a" / "pl.md", "---\ntitle: Cień\n---\nTekst")
+    write(tmp_path / "a" / "en.md", "---\ntitle: Shadow\nai: Claude Sonnet 5.5\n---\nText")
+    entry = load_entry("stories", tmp_path / "a")
+    assert entry is not None
+    assert entry.variants["en"].ai_note == "Written with AI assistance (Claude Sonnet 5.5)."
+    assert entry.variants["pl"].ai_note is None
+
+
+def test_ai_note_localized(tmp_path: Path) -> None:
+    write(tmp_path / "a" / "pl.md", "---\ntitle: Cień\nai: Claude Sonnet 5.5\n---\nTekst")
+    entry = load_entry("stories", tmp_path / "a")
+    assert entry is not None
+    assert entry.main.ai_note == "Napisane z pomocą AI (Claude Sonnet 5.5)."
+
+
+def test_invalid_ai_fails(tmp_path: Path) -> None:
+    write(tmp_path / "a" / "en.md", "---\ntitle: T\nai: true\n---\nx")
+    with pytest.raises(ContentError):
+        load_entry("stories", tmp_path / "a")
+
+
 def test_unknown_language_fails(tmp_path: Path) -> None:
     write(tmp_path / "a" / "xx.md", "---\ntitle: T\n---\nx")
     with pytest.raises(ContentError):

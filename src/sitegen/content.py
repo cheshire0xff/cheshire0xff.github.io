@@ -47,6 +47,14 @@ def _as_tags(value: Any, source: Path) -> tuple[str, ...]:
     raise ContentError(f"{source}: tags must be a list of strings")
 
 
+def _as_ai_model(value: Any, source: Path) -> str | None:
+    if value is None:
+        return None
+    if isinstance(value, str) and value.strip():
+        return value.strip()
+    raise ContentError(f"{source}: ai must be a non-empty model name")
+
+
 def load_entry(section: str, entry_dir: Path) -> Entry | None:
     variants: dict[str, Variant] = {}
     dates: set[datetime.date] = set()
@@ -75,6 +83,7 @@ def load_entry(section: str, entry_dir: Path) -> Entry | None:
             summary=str(meta.get("summary", "")),
             html=render_markdown(body),
             words=len(re.findall(r"\w+", body)),
+            ai_model=_as_ai_model(meta.get("ai"), path),
         )
 
     if not variants:

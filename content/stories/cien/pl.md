@@ -1,6 +1,7 @@
 ---
 title: Cień
 date: 2026-10-29
+ai: Claude Sonnet 5.5
 summary: Cztery tygodnie po wdrożeniu Programu Ciągłości Operacyjnej.
 ---
 ---

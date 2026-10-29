@@ -10,6 +10,10 @@ from pathlib import Path
 LANG_NAMES: dict[str, str] = {"pl": "Polski", "en": "English"}
 WORDS_PER_MINUTE = 220
 DEFAULT_LANG = "en"
+AI_NOTES: dict[str, str] = {
+    "en": "Written with AI assistance ({model}).",
+    "pl": "Napisane z pomocą AI ({model}).",
+}
 
 
 class ContentError(Exception):
@@ -50,6 +54,13 @@ class Variant:
     summary: str
     html: str
     words: int
+    ai_model: str | None = None
+
+    @property
+    def ai_note(self) -> str | None:
+        if self.ai_model is None:
+            return None
+        return AI_NOTES[self.lang].format(model=self.ai_model)
 
     @property
     def reading_minutes(self) -> int:
